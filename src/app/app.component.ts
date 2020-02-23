@@ -8,7 +8,10 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Lionchun';
   subtitle = 'A place to share your <u>knowledge.</u>';
-  list = [
+
+
+
+  OriginalList = [
 
     {
 
@@ -119,4 +122,14 @@ export class AppComponent {
     }
 
   ];
+
+  list = this.OriginalList;
+
+  searchArticles($event: string) {
+    if ($event) {
+      this.list = this.OriginalList.filter(article => article.title.indexOf($event) !== -1);
+    } else {
+      this.list = this.OriginalList;
+    }
+  }
 }
